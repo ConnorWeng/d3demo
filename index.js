@@ -13,7 +13,17 @@ var linesData = [];
 
 var render = function() {
   mouse.attr('cx', data[frameNo].x)
-    .attr('cy', data[frameNo].y);
+    .attr('cy', data[frameNo].y)
+    .transition()
+    .attr('r', function() {
+      if (data[frameNo].e === 'click') {
+        return '12';
+      } else {
+        return '4';
+      }
+    })
+    .transition()
+    .attr('r', 4);
 
   if (frameNo > 0) {
     var prevPoint = data[frameNo-1];
